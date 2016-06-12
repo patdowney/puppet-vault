@@ -14,19 +14,6 @@ class vault::params {
   $service_name     = 'vault'
   $num_procs        = $::processorcount
 
-  case $::osfamily {
-    'Debian': {
-      $service_provider = 'upstart'
-    }
-    'RedHat': {
-      if ($::operatingsystemmajrelease == '6') {
-        $service_provider = 'redhat'
-      } else {
-        $service_provider = 'systemd'
-      }
-    }
-    default: {
-      fail("Module ${module_name} is not supported on osfamily '${::osfamily}'")
-    }
-  }
+
+  $service_provider = $::initsystem
 }
