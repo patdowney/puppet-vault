@@ -11,6 +11,7 @@ group :test do
 end
 
 group :development do
+  gem "syck"
   gem "travis"
   gem "travis-lint"
   gem "vagrant-wrapper"
